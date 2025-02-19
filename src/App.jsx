@@ -31,6 +31,33 @@ const Home = () => {
   const fetchRandomImage = async () => {
     const response = await fetch(`https://picsum.photos/${width}/${height}?random=1`);
     setImageUrl(response.url);
+  
   };
+
+  return (
+    <div>
+      <h1>Search Images from Lorem Picsum</h1>
+      <div>
+        <label>Width: </label>
+        <input type="number" value={width} onChange={(e) => setWidth(e.target.value)} />
+        <label> Height: </label>
+        <input type="number" value={height} onChange={(e) => setHeight(e.target.value)} />
+        <label> Seed (optional): </label>
+        <input type="text" value={seed} onChange={(e) => setSeed(e.target.value)} />
+        <label>
+          <input type="checkbox" checked={grayscale} onChange={(e) => setGrayscale(e.target.checked)} />
+          Grayscale
+        </label>
+        <label> Blur: </label>
+        <input type="number" min="0" max="10" value={blur} onChange={(e) => setBlur(e.target.value)} />
+        <button onClick={fetchImages}>Search</button>
+        <button onClick={fetchRandomImage}>Random Image</button>
+      </div>
+      <div className="gallery">
+        {imageUrl && <img src={imageUrl} alt="Random" className="image" />}
+      </div>
+    </div>
+  );
+
 
 }
