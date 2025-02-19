@@ -31,7 +31,7 @@ const Home = () => {
   const fetchRandomImage = async () => {
     const response = await fetch(`https://picsum.photos/${width}/${height}?random=1`);
     setImageUrl(response.url);
-  
+
   };
 
   return (
@@ -60,4 +60,21 @@ const Home = () => {
   );
 
 
+  const About = () => (
+    <div>
+      <h1>About</h1>
+      <p>This is a simple React app where you can search for images with specific dimensions and effects like grayscale and blur.</p>
+    </div>
+  );
+
+
+  function App(){
+    return(
+      <Router></Router>
+    )
+  }
+
+
 }
+
+export default App;
