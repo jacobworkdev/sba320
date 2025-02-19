@@ -28,4 +28,9 @@ const Home = () => {
     setImageUrl(url);
   };
 
+  const fetchRandomImage = async () => {
+    const response = await fetch(`https://picsum.photos/${width}/${height}?random=1`);
+    setImageUrl(response.url);
+  };
+
 }
