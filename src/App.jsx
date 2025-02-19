@@ -2,7 +2,6 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 
-//states
 const Home = () => {
   const [width, setWidth] = useState(400);
   const [height, setHeight] = useState(400);
@@ -10,8 +9,6 @@ const Home = () => {
   const [blur, setBlur] = useState(0);
   const [seed, setSeed] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-
-
 
   const fetchImages = () => {
     let url = `https://picsum.photos/`;
@@ -24,14 +21,13 @@ const Home = () => {
       if (grayscale) url += "grayscale&";
       if (blur > 0) url += `blur=${blur}&`;
     }
-    url += "?random=1"; // Ensures new image fetch
+    url += "?random=1"; 
     setImageUrl(url);
   };
 
   const fetchRandomImage = async () => {
     const response = await fetch(`https://picsum.photos/${width}/${height}?random=1`);
     setImageUrl(response.url);
-
   };
 
   return (
@@ -58,20 +54,19 @@ const Home = () => {
       </div>
     </div>
   );
+};
 
+const About = () => (
+  <div>
+    <h1>About</h1>
+    <p>This is a simple React app where you can search for images with specific dimensions and effects like grayscale and blur.</p>
+  </div>
+);
 
-  const About = () => (
-    <div>
-      <h1>About</h1>
-      <p>This is a simple React app where you can search for images with specific dimensions and effects like grayscale and blur.</p>
-    </div>
-  );
-
-//app routes
-  function App(){
-    return(
-      <Router>
-        <nav>
+function App() {
+  return (
+    <Router>
+      <nav>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
       </nav>
@@ -79,11 +74,8 @@ const Home = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
       </Routes>
-      </Router>
-    )
-  }
-
-
+    </Router>
+  );
 }
 
 export default App;
