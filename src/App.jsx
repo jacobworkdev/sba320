@@ -11,4 +11,21 @@ const Home = () => {
   const [seed, setSeed] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
+
+
+  const fetchImages = () => {
+    let url = `https://picsum.photos/`;
+    if (seed) {
+      url += `seed/${seed}/`;
+    }
+    url += `${width}/${height}`;
+    if (grayscale || blur > 0) {
+      url += "?";
+      if (grayscale) url += "grayscale&";
+      if (blur > 0) url += `blur=${blur}&`;
+    }
+    url += "?random=1"; // Ensures new image fetch
+    setImageUrl(url);
+  };
+
 }
